@@ -1,1 +1,2 @@
-# Sync-Google-Tasks-Microsoft-To-Do
+# Sync Google Tasks & Microsoft To Do
+WORK IN PROGRES ...
