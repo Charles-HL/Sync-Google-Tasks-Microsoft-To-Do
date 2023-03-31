@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 .idea/
-google-task/token.json
+googletask/token.json
