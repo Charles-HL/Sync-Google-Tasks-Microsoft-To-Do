@@ -113,39 +113,3 @@ class MicrosoftToDoApi:
         if 'error' in json:
             raise Exception(json)
         return MicrosoftTodoTask(json)
-
-
-if __name__ == '__main__':
-    file_path = os.path.abspath(__file__)
-    dir_path = os.path.dirname(os.path.dirname(file_path))
-    config = configparser.ConfigParser()
-    config.read(os.path.join('..', dir_path, 'config', 'config.cfg'))
-    microsoft_setting = config['azure']
-    api = MicrosoftToDoApi(microsoft_setting)
-    api.logger.info(api.access_token.token)
-    lists = api.get_all_lists().lists
-    api.logger.info(lists[0].display_name)
-    api.logger.info(lists[0].item_id)
-    from_list = api.get_all_tasks_from_list(lists[0].item_id)
-    tasks_ = from_list.tasks[5]
-    api.logger.info(tasks_.title)
-    api.logger.info(tasks_.status)
-
-    tasks_.title = "test 2"
-    dict_obj = tasks_.to_dict()
-    api.logger.info(dict_obj)
-    api.update_task(lists[0].item_id, tasks_.id, dict_obj)
-
-    microsoft_task_to_create: MicrosoftTodoTask = MicrosoftTodoTask(title="Test hehe",
-                                                                    body={
-                                                                        "content": "Test hehe",
-                                                                        "contentType": "text"
-                                                                    },
-                                                                    status="notStarted",
-                                                                    due_date_time={
-                                                                        "dateTime": "2024-01-01T00:00:00.0000000",
-                                                                        "timeZone": "UTC"
-                                                                    })
-    dict_obj = microsoft_task_to_create.to_dict()
-    api.logger.info(dict_obj)
-    api.post_task(lists[0].item_id, dict_obj)

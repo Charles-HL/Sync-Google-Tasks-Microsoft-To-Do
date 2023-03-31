@@ -91,30 +91,3 @@ class GoogleTasksApi:
         except HttpError as err:
             self.logger.error(err)
             return None
-
-
-if __name__ == '__main__':
-    file_path = os.path.abspath(__file__)
-    dir_path = os.path.dirname(os.path.dirname(file_path))
-    config = configparser.ConfigParser()
-    config.read(os.path.join(dir_path, 'config', 'config.cfg'))
-    google_settings = config['google-api']
-    api = GoogleTasksApi(google_settings)
-    lists_ = api.get_all_lists().task_lists[0]
-    print(lists_.title)
-    from_list = api.get_all_tasks_from_list(lists_.id)
-    print(from_list.tasks[0].title)
-    from_list.tasks[0].title = "Test"
-    dict_obj = from_list.tasks[0].to_dict()
-    print(dict_obj)
-    api.update_task(lists_.id, from_list.tasks[0].id, dict_obj)
-
-    google_task_to_create: GoogleTaskItem = GoogleTaskItem(title="test",
-                                                           notes="test body",
-                                                           status='needsAction',
-                                                           due='2024-01-01T00:00:00.000Z',
-                                                           kind='tasks#task')
-
-    dict_obj = google_task_to_create.to_dict()
-    print(dict_obj)
-    api.post_task(lists_.id, dict_obj)
