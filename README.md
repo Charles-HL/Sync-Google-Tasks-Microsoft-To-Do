@@ -1,5 +1,7 @@
 # Sync Google Tasks & Microsoft To Do
-This project allows to sync tasks between Google Task and Microsoft To Do
+This project allows to sync tasks between Google Task and Microsoft To Do.
+
+It's aimed to be ran as a background server.
 
 ## Actual limitations
 - Only sync the default task list
@@ -11,7 +13,7 @@ This project allows to sync tasks between Google Task and Microsoft To Do
 ## The application
 - You must have `Python 3`, it is prefered to have at least `Python 3.11` as it has been developped for this version of Python
 - Clone the github project
-- Run this command at the root of the project to install the packages `pip install -r requirements.txt `
+- Run this command at the root of the project to install the packages `pip install -r requirements.txt`
 ## Access to Google API
 - Follow the guide in `Set up your environment` from [developers.google.com/tasks/quickstart/python](https://developers.google.com/tasks/quickstart/python?hl=en)
 - Once you have the file `credentials.json` put all its content in the file `config/config.cfg` in `[google-api] credentials`. The json must be on one line.
