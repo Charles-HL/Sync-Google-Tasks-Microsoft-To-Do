@@ -26,8 +26,8 @@ class SyncTasks:
 
     def __init__(self, azure_config: dict, google_config: dict):
         self.logger = logging.getLogger('my_logger')
-        self.microsoft_todo_api = MicrosoftToDoApi(azure_config)
         self.google_tasks_api = GoogleTasksApi(google_config)
+        self.microsoft_todo_api = MicrosoftToDoApi(azure_config)
 
     def sync(self):
         """

@@ -2,6 +2,7 @@
 Copyright (c) 2023, Charles HL. All rights reserved.
 """
 import configparser
+import json
 import os.path
 import logging
 from google.auth.transport.requests import Request
@@ -44,7 +45,7 @@ class GoogleTasksApi:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_config(self.settings["credentials"], SCOPES)
+                flow = InstalledAppFlow.from_client_config(json.loads(self.settings["credentials"]), SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open(token_path, 'w') as token:

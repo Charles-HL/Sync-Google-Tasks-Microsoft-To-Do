@@ -26,7 +26,8 @@ It's aimed to be ran as a background server.
 
 # Run
 - To run the app, you only have to run the `main.py` file with python
-- At the start a message like this will appear in the console : 
+- At the first start, a message like this will appear with a link to log to your google account. You will need to reproduce this step only the first time to generate a token file.
+- A second message like this will appear in the console : 
 ```
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXX to authenticate.
 
